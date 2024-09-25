@@ -1,4 +1,12 @@
-# React + TypeScript + Vite
+# React + TypeScript + Vite project setup example template
+
+Project initialized by running: `npm create vite@latest react-template -- --template react-ts`.
+
+### Project setup:
+- run `npm i` to install dependencies
+- run ­`npm run dev` to start the dev environment
+
+---
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
