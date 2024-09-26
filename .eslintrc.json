@@ -1,0 +1,84 @@
+{
+  "extends": ["eslint:recommended", "react-app", "react-app/jest", "prettier"],
+  "plugins": ["import"],
+  "rules": {
+    "no-restricted-globals": [
+      "error",
+      {
+        "name": "fdescribe",
+        "message": "Do not commit 'fdescribe'. Use 'describe' instead."
+      },
+      {
+        "name": "fit",
+        "message": "Do not commit 'fit'. Use 'it' instead."
+      },
+      {
+        "name": "xit",
+        "message": "Do not commit 'xit'."
+      }
+    ],
+    "no-restricted-properties": [
+      "error",
+      {
+        "object": "describe",
+        "property": "only",
+        "message": "Do not commit 'describe.only'. Use 'describe' instead"
+      },
+      {
+        "object": "it",
+        "property": "only",
+        "message": "Do not commit 'it.only'. Use 'it' instead"
+      },
+      {
+        "object": "test",
+        "property": "only",
+        "message": "Do not commit 'test.only'. Use 'test' instead"
+      },
+      {
+        "object": "test",
+        "property": "skip",
+        "message": "Do not commit 'test.skip'."
+      }
+    ],
+    "no-restricted-imports": [
+      "error",
+      {
+        "paths": [
+          {
+            "name": "@vismaux/react-vud",
+            "importNames": ["Modal"],
+            "message": "Please import 'Modal' from 'modules/shared/components/Modal/Modal' instead."
+          }
+        ]
+      }
+    ],
+    "react-hooks/exhaustive-deps": [
+      "off",
+      {
+        "additionalHooks": "(useMyCustomHook|useMyOtherCustomHook)"
+      }
+    ],
+    "import/order": [
+      "warn",
+      {
+        "groups": ["builtin", "external", "parent", "sibling", "index"],
+        "pathGroups": [
+          {
+            "pattern": "react**",
+            "group": "external",
+            "position": "before"
+          }
+        ],
+        "pathGroupsExcludedImportTypes": ["react"],
+        "newlines-between": "always",
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        }
+      }
+    ],
+    "@typescript-eslint/no-shadow": "error",
+    "@typescript-eslint/no-explicit-any": ["error", { "ignoreRestArgs": true }],
+    "react/jsx-boolean-value": "warn"
+  }
+}

@@ -1,0 +1,8 @@
+# ide
+.vs
+.history
+.github
+
+# artifacts
+build
+coverage
