@@ -5,14 +5,16 @@ import Auth from './pages/Auth';
 import { lazy, Suspense } from 'react';
 import Loader from './components/Loader/Loader';
 import { ErrorBoundary } from 'react-error-boundary';
+import Dashboard from './pages/Dashboard/Dashboard';
 
 const Home = lazy(() => import('./pages/Home'));
 const NotFound = lazy(() => import('./pages/NotFound'));
+const PrivateRoute = lazy(() => import('./features/PrivateRoute/PrivateRoute'));
 
 const queryClient = new QueryClient();
 
-//TODO:
-// create a private route component
+// Dummy authentication state
+const isAuthenticated = false; // Change to true/false to simulate authentication
 
 function App() {
   return (
@@ -30,8 +32,13 @@ function App() {
                 element={<Auth />}
               />
               <Route
-                path="/404"
-                element={<NotFound />}
+                path="/dashboard"
+                element={
+                  <PrivateRoute
+                    element={<Dashboard />}
+                    isAuthenticated={isAuthenticated}
+                  />
+                }
               />
               <Route
                 path="*"
